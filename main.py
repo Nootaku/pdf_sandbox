@@ -6,6 +6,7 @@
 5. Save file as new_name
 6. Close file
 """
+import PyPDF2
 
 
 def rename(text, new_name):
@@ -35,8 +36,20 @@ def main(path, new_name):
         print('Apples not in string')
 
 
+def getPdfInformation(path: str):
+    # 1 Open pdf from path and create pdfObject:
+    with open(path, 'rb') as file:
+        pdfReader = PyPDF2.PdfFileReader(file)
+
+        print(pdfReader.numPages)
+        pageObj = pdfReader.getPage(0)
+        print(pageObj.getContents())
+        print(pageObj.extractText())
+
+
 if __name__ == '__main__':
-    my_path = 'sample.txt'
+    my_path = 'sample.pdf'
     my_name = 'apple'
 
-    main(my_path, my_name)
+    # main(my_path, my_name)
+    getPdfInformation(my_path)
