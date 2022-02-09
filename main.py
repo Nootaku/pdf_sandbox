@@ -7,6 +7,7 @@
 6. Close file
 """
 import PyPDF2
+from pdfminer.high_level import extract_text
 
 
 def rename(text, new_name):
@@ -38,17 +39,20 @@ def main(path, new_name):
 
 def getPdfInformation(path: str):
     # 1 Open pdf from path and create pdfObject:
-    with open(path, 'rb') as file:
-        pdfReader = PyPDF2.PdfFileReader(file)
+    pdfReader = PyPDF2.PdfFileReader(path)
 
-        print(pdfReader.numPages)
-        pageObj = pdfReader.getPage(0)
-        print(pageObj.getContents())
-        print(pageObj.extractText())
+    print(pdfReader.numPages)
+    pageObj = pdfReader.getPage(0)
+    print(pageObj.getContents())
+    print(pageObj.extractText())
+    #
+    # # text = extract_text("sample.pdf")
+    #
+    # print(text)
 
 
 if __name__ == '__main__':
-    my_path = 'sample.pdf'
+    my_path = 'PA00X3VZ.pdf'
     my_name = 'apple'
 
     # main(my_path, my_name)
