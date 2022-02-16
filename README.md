@@ -1,2 +1,3 @@
 # pdf_sandbox
 Sandbox to work on PDF files. Rename, Split, Data extraction ...
+🎉 j'ai créé un nouvel env conda et un fichier requirements.txt dedans (normalement ^^)
